@@ -11,11 +11,11 @@ export class ApiError extends Error {
 
 function parsePrediction(data) {
   const p = data?.churn_probability;
-  if (typeof p !== "number" || !Number.isFinite(p) || p < 0 || p > 1 || typeof data?.result !== "string") {
+  if (typeof p !== "number" || !Number.isFinite(p) || p < 0 || p > 100|| typeof data?.result !== "string") {
     throw new ApiError("invalid", "The server replied, but not in the expected format.");
   }
   return {
-    probability: p/100,
+    probability: p / 100,
     result: data.result,
     prediction: data.prediction,
     threshold: typeof data.threshold === "number" ? data.threshold : null,

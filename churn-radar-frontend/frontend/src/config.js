@@ -6,7 +6,7 @@
 // Where the Flask API lives.
 //  - Direct mode (default): needs CORS enabled on Flask (see README).
 //  - Proxy mode: run `python serve.py` and set this to "" (same origin, no CORS).
-export const API_BASE_URL = "http://127.0.0.1:5000";
+export const API_BASE_URL = "https://bank-churn-model-ml.onrender.com";
 export const PREDICT_PATH = "/predict";
 export const REQUEST_TIMEOUT_MS = 20000;
 
