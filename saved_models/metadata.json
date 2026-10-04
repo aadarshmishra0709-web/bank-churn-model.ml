@@ -1,0 +1,45 @@
+{
+    "features": [
+        "CreditScore",
+        "Age",
+        "Tenure",
+        "Balance",
+        "NumOfProducts",
+        "HasCrCard",
+        "IsActiveMember",
+        "EstimatedSalary",
+        "GeographyLocation",
+        "GenderCategory",
+        "Month"
+    ],
+    "target": "Exited",
+    "models": [
+        "Logistic Regression",
+        "SVC",
+        "Decision Tree",
+        "Random Forest",
+        "KNN",
+        "Naive Bayes",
+        "Gradient Boosting",
+        "AdaBoost"
+    ],
+    "ensemble_method": "Average Probability Ensemble",
+    "ensemble_threshold": 0.3,
+    "n_models": 8,
+    "training_shape": [
+        8000,
+        11
+    ],
+    "test_shape": [
+        2000,
+        11
+    ],
+    "sklearn_version": "1.9.1",
+    "final_metrics": {
+        "accuracy": 0.8285,
+        "precision": 0.5663900414937759,
+        "recall": 0.6707616707616708,
+        "f1": 0.6141732283464567,
+        "roc_auc": 0.860631047071725
+    }
+}

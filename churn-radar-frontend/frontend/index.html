@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Churn Radar · Customer churn prediction</title>
+  <meta name="description" content="Score a bank customer's churn risk with an ensemble of eight machine-learning models.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%230d2b30'/%3E%3Cpath d='M6 22a10 10 0 0 1 20 0' fill='none' stroke='%236fe0bf' stroke-width='3'/%3E%3Cpath d='M16 22l5-7' stroke='%23ff7a59' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="styles/tokens.css">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/components.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="./" aria-label="Churn Radar home">
+        <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+          <rect width="32" height="32" rx="9"/>
+          <path d="M6 22a10 10 0 0 1 20 0" fill="none" stroke="#6fe0bf" stroke-width="3"/>
+          <path d="M16 22l5-7" stroke="#ff7a59" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <span>Churn Radar</span>
+      </a>
+      <p class="topbar-note">Retention analytics</p>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="layout">
+      <div class="primary">
+        <div class="intro">
+          <h1>Will this customer stay?</h1>
+          <p>Enter the customer's details and eight machine-learning models will estimate how likely they are to leave the bank.</p>
+        </div>
+
+        <form id="churn-form" class="form-panel" novalidate aria-label="Customer details">
+          <div id="fields"></div>
+
+          <div class="form-actions">
+            <button type="submit" id="submit-btn" class="btn btn--primary">
+              <span class="btn-text">Predict churn</span>
+            </button>
+            <button type="button" id="reset-btn" class="btn btn--ghost">Reset</button>
+            <button type="button" id="sample-btn" class="btn btn--link">Fill with a sample customer</button>
+          </div>
+        </form>
+      </div>
+
+      <aside id="result-panel" class="result" data-state="idle" aria-live="polite" aria-label="Prediction result">
+        <div class="result-body" data-result-body></div>
+      </aside>
+    </div>
+
+    <section class="insights" aria-labelledby="insights-title">
+      <div class="insights-col">
+        <h2 id="insights-title">How the score is made</h2>
+        <p>Each model below estimates a churn probability for the customer. The backend averages the eight estimates and applies a decision cutoff to produce the verdict.</p>
+        <ul id="model-list" class="chips"></ul>
+      </div>
+      <div class="insights-col">
+        <h2>Model performance on test data</h2>
+        <p>Measured on held-out test data during evaluation. These describe the model overall, not the customer you just scored.</p>
+        <ul id="metric-list" class="metrics"></ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Predictions come from your Flask <code>/predict</code> endpoint. This interface performs no scoring of its own.</p>
+  </footer>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>
